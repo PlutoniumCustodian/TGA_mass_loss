@@ -32,7 +32,46 @@ TGA_count = range(len(TGA_names))
 TGA_listOdf = []
 
 
-#Read in the data from excell
+
+
+#%%get sample info from name
+A_fnumb = []
+A_PC_Name = []
+A_Con = []
+A_LS = []
+
+for x in TGA_count:
+    #find the end of the PC name by finding first number
+    m = re.search(r"\d", TGA_names[x])
+    temp_name = TGA_names[x][4 : m.span()[1]-1]
+    temp_name = temp_name.replace("Axial", "-Axial")
+    temp_name = temp_name.replace("Corner", "-Corner")
+    A_PC_Name.append(temp_name)
+    #find the concentration by searching for M_
+    n = re.search(r"M_", TGA_names[x])
+    A_Con.append(TGA_names[x][n.span()[1]-6 : n.span()[1]-2])
+    o = re.search(r"_LS", TGA_names[x])
+    A_LS.append(TGA_names[x][o.span()[1]: o.span()[1]+4])
+    A_fnumb.append(x)
+
+# Place list of info into data frame    
+NameMeta_df = pd.DataFrame({'File#': A_fnumb})
+NameMeta_df['PC_Name'] = A_PC_Name
+NameMeta_df['Concentration(mM)'] = A_Con
+NameMeta_df['L/S'] = A_LS   
+print(NameMeta_df)
+
+#%%Read in the data from excell
+Pan_Num = []
+s_Mass = []
+ex_Mass = []
+NEUP_num = []
+x = 0
+tempMeta = pd.read_excel(os.path.join(datpath, TGA_names[x]), sheet_name=0, header=None)
+print(tempMeta[tempMeta[0]=='Pan Number'].index.values)
+
+
+#%%temp break
 for x in TGA_count:
     #Read the TGA data
     tempTGA = pd.read_excel(os.path.join(datpath, TGA_names[x]), sheet_name=1, header=[1,2])
@@ -41,19 +80,8 @@ for x in TGA_count:
     # tempMS_H20 = pd.read_excel(os.path.join(datpath, MS_names[x]), sheet_name="18.0 AMU", header=[1,2])
     # MS_H2O_listOdf.append(tempMS_H20)
     # tempMS_C02 = pd.read_excel(os.path.join(datpath, MS_names[x]), sheet_name="44.0 AMU", header=[1,2])
-    # MS_CO2_listOdf.append(tempMS_C02)
-
-#%%get sample info from name
-
-Graph_Title = []
-for x in TGA_MS_count:
-    #find the end of the PC name by finding first number
-    m = re.search(r"\d", TGA_names[x])
-    temp_name = TGA_names[x][4 : m.span()[1]-1]
-    temp_name = temp_name.replace("Axial", "-Axial")
-    temp_name = temp_name.replace("Corner", "-Corner")
-    Graph_Title.append(temp_name)
-    
+    # MS_CO2_listOdf.append(tempMS_C02) 
+   
 #%% Ready to polot ?
 
 #Values for setting that are used multple places
