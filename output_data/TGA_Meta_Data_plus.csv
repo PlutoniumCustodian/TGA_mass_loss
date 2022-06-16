@@ -1,0 +1,34 @@
+Column1,File#,PC_Name,Concentration(mM),L/S,Pan_#,Initial_mass_TGA_mg,Intial_mass_external_mg,NEUP_Sample_#,Data set,Column2
+5,5,Centroid,714,170,13,29.993,29.7,101,*1ml/g,Over temped to 100C
+6,6,Centroid,714,173,15,32.829,32.8,102,*1ml/g,Aged 14 days
+11,11,Centroid,714,172,11,27.709,30.8,108,*1ml/g,7 day
+15,15,Mg-Axial,714,171,15,30.392,31.6,30,*1ml/g,resent test on old sample
+16,16,Mg-Axial,714,162,5,30.536,30.5,20,*1ml/g,
+27,27,P-Corner,209,106,1,29.622,29.8,49,*Na:Al=1,second run as contol
+2,2,Al-Axial,617,94,1,32.019,31.8,86,0.5ml/g,
+4,4,Al-Corner,465,120,1,33.131,32.8,77,0.5ml/g,
+18,18,Mg-Axial,362,149,1,20.687,31.3,88,0.5ml/g,
+21,21,Mg-Corner,455,127,3,32.493,32.4,80,0.5ml/g,
+23,23,P-Axial,455,124,1,27.804,28.3,90,0.5ml/g,
+25,25,P-Corner,500,117,1,31.805,31.9,82,0.5ml/g,
+28,28,Si -Corner,455,126,11,30.421,30.4,100,0.5ml/g,
+30,30,Si-Axial,385,146,15,29.862,30.2,99,0.5ml/g,
+13,13,Centroid,1000,171,1,32.41,32.1,73,10 M,
+0,0,Al-Axial,1000,124,3,30.635,31.3,28,1ml/g,
+3,3,Al-Corner,833,143,3,29.176,30.1,34,1ml/g,
+12,12,Centroid,714,172,13,26.274,32.8,109,1ml/g,1 day
+14,14,Mg-Axial,714,161,1,31.551,31.8,30,1ml/g,earlier test
+19,19,Mg-Corner,714,162,1,29.949,29.8,32,1ml/g,
+22,22,P-Axial,833,143,5,16.5,31.4,24,1ml/g,
+24,24,P-Corner,1000,124,5,29.532,29.9,36,1ml/g,
+29,29,Si-Axial,714,162,1,30.085,30.1,38,1ml/g,
+31,31,Si-Corner,833,143,3,28.881,29.5,40,1ml/g,
+7,7,Centroid,593,153,3,31.223,31.5,104,5.93 M,additional concentration
+8,8,Centroid,655,157,5,28.74,28.9,105,6.55 M,additional concentration
+9,9,Centroid,821,178,11,29.109,29.5,106,8.21 M,additional concentration
+10,10,Centroid,893,181,13,28.797,30.1,107,8.93 M,additional concentration
+1,1,Al-Axial,807,109,3,31.156,31.3,65,Na:Al=1,
+17,17,Mg-Axial,255,149,1,29.623,29.6,58,Na:Al=1,
+20,20,Mg-Corner,251,113,1,30.801,30.9,55,Na:Al=1,
+26,26,P-Corner,209,106,3,31.167,31.3,49,Na:Al=1,
+32,32,Si-Corner,242,108,5,27.785,28,53,Na:Al=1,
