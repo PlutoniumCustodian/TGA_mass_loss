@@ -101,8 +101,8 @@ for x in TGA_count:
 #%% Pickle data for use later
 # creates file for pickle w = creat for writing, b = treat as binary file
 
-pd.to_pickle(Meta_df,"pickle_jar/Meta_df.pkl" )
-pd.to_pickle(lst_o_data,"pickle_jar/TGA_ex_data.pkl" )
+# pd.to_pickle(Meta_df,"pickle_jar/Meta_df.pkl" )
+# pd.to_pickle(lst_o_data,"pickle_jar/TGA_ex_data.pkl" )
 # with open ('output_data/TGA_meta_data.pickle', 'wb') as f: 
 #     pickle.dump('Meta_df', f)  
 
@@ -111,12 +111,5 @@ pd.to_pickle(lst_o_data,"pickle_jar/TGA_ex_data.pkl" )
 
 #%% Output to excell
 
-Meta_df.to_csv("output_data/TGA_Meta_Data.csv")
+# Meta_df.to_csv("output_data/TGA_Meta_Data.csv")
 
-# for x in TGA_MS_count:
-#     Plot_TGA_MS(x)
-    
-# wt_loss_dictionary = {"File" : TGA_names, "Name" : Graph_Title, "Weight Loss 30-1000C (%)" : Wt_loss_dat
-# , "Weight Loss 105-1000C (%)" : Wt_loss_dat2}
-# wt_loss_df = pd.DataFrame(wt_loss_dictionary)
-# wt_loss_df.to_csv('Plots/weight_loss_table.csv', index=False)
