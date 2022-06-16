@@ -109,6 +109,51 @@ fl_df['Bound_water'] = fl_bound
 fl_df['loose_bound_water'] = fl_loose 
 fl_df['Tight_bound_water'] = fl_tight
 
+#%% get chem info based on "PC name"
+
+#Get chemistry of names cement precoursors atomic % of metal x makes of total
+# metalic content  
+pc_chem = pd.read_csv('input_data/Atomic_fraction_of_metals_in_PC.csv')
+
+# get labes of above data and make empty df with lenght that matches data
+chem_lable = list(pc_chem)
+chem_lable = chem_lable[1:]
+dat_length = range(len(Meta_df))
+chem_length =range(len(chem_lable)-1) # range of lenth = number of data labes in pc_chem
+
+chem_df = pd.DataFrame(columns=[chem_lable], index=dat_length)
+r_name = range(len(pc_chem))
+
+# using the 'PC name" asign vlaues from pc_chem to chem_df
+for x in dat_length:
+    for z in r_name:
+        if Meta_df.loc[x,'PC_Name'] == pc_chem.loc[z,'Name']:
+            for y in [0,1,2,3]:
+                chem_df.iloc[x,y] = pc_chem.iloc[z,(y+1)]
+    
+
+
+
+
 #%% Export more data frame
-fl_df.to_csv("output_data/TGA_fractional_weight_loss.csv")
-pd.to_pickle(fl_df,"pickle_jar/TGA_fractional_weight_loss.pkl" )
+# fl_df.to_csv("output_data/TGA_fractional_weight_loss.csv")
+# pd.to_pickle(fl_df,"pickle_jar/TGA_fractional_weight_loss.pkl" )
+
+#%% Split out data sets
+
+
+# get list of file numbers for the data set that of samples activeate with
+# 1ml 10M NaOH per gram of cement precourser  aged for 24hrs at 35C before drying
+Index_set_1ml_1g = pd.read_csv('input_data/Sample_set_1ml_per_1gram.csv')
+
+# creates df with the rows matching the index (file number) improrted in the above lines
+Data_set_1ml_1g = fl_df.loc[Index_set_1ml_1g['File number']]
+
+Meta_set_1ml_1g = Meta_df.loc[Index_set_1ml_1g['File number']]
+
+#asign composition data to each file based on 'PC Name'
+
+
+
+
+
