@@ -10,6 +10,7 @@ Created on Tue Jun 14 10:39:16 2022
 # import re
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 # get varialble from pickle jar
 Meta_df = pd.read_pickle("pickle_jar/Meta_df.pkl")
@@ -138,6 +139,7 @@ for x in dat_length:
 #%% Export more data frame
 # fl_df.to_csv("output_data/TGA_fractional_weight_loss.csv")
 # pd.to_pickle(fl_df,"pickle_jar/TGA_fractional_weight_loss.pkl" )
+# pd.to_pickle(chem_df, "pickle_jar/TGA_target_chem_comp.pkl")
 
 #%% Split out data sets
 
@@ -148,10 +150,33 @@ Index_set_1ml_1g = pd.read_csv('input_data/Sample_set_1ml_per_1gram.csv')
 
 # creates df with the rows matching the index (file number) improrted in the above lines
 Data_set_1ml_1g = fl_df.loc[Index_set_1ml_1g['File number']]
-
 Meta_set_1ml_1g = Meta_df.loc[Index_set_1ml_1g['File number']]
+Chem_set_1ml_1g = chem_df.loc[Index_set_1ml_1g['File number']]
 
-#asign composition data to each file based on 'PC Name'
+#%% Make some plots
+
+legspot = 'upper center' # Determines where legend is placed
+
+# font = FontProperties()
+# font.set_family('sans-serf')
+# font.set_name('Arial')
+# font.set_size(9)
+n=0
+
+mktype = ["o","v","s","X"]
+fl_lables = list(Data_set_1ml_1g)
+for n in [0,1,2,3]:
+    fig, ax = plt.subplots(figsize=(7.08,5)) #size is in inches
+    for m in [0,1,2,3]:
+        ax.plot(Chem_set_1ml_1g.iloc[:,n] * 100, Data_set_1ml_1g.loc[:,fl_lables[m+4]]*100,\
+                marker=mktype[m], ms=5,ls='', label=fl_lables[m+4])
+    ax.set_xlabel(chem_lable[n] + " (atm. % of total metal)", fontsize=9)
+    ax.set_ylabel("Weight loss (%)", fontsize=9)
+    ax.tick_params(axis='x', labelsize=8)
+    ax.tick_params(axis='y', labelsize=8)
+    ax.legend(loc=legspot)
+    ax.set_xlim([5,65])
+    ax.set_ylim([0,50])
 
 
 
