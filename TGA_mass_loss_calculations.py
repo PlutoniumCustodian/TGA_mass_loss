@@ -169,7 +169,7 @@ for n in [0,1,2,3]:
     fig, ax = plt.subplots(figsize=(7.08,5)) #size is in inches
     for m in [0,1,2,3]:
         ax.plot(Chem_set_1ml_1g.iloc[:,n] * 100, Data_set_1ml_1g.loc[:,fl_lables[m+4]]*100,\
-                marker=mktype[m], ms=5,ls='', label=fl_lables[m+4])
+                marker=mktype[m],fillstyle='none', ms=5,ls='', label=fl_lables[m+4])
     ax.set_xlabel(chem_lable[n] + " (atm. % of total metal)", fontsize=9)
     ax.set_ylabel("Weight loss (%)", fontsize=9)
     ax.tick_params(axis='x', labelsize=8)
@@ -177,7 +177,8 @@ for n in [0,1,2,3]:
     ax.legend(loc=legspot)
     ax.set_xlim([5,65])
     ax.set_ylim([0,50])
-
+    svg_name_path = 'output_data/figures/' + chem_lable[n] + '_wt_loss.svg'
+    # fig.savefig(svg_name_path, transparent=False, bbox_inches="tight")
 
 
 
