@@ -20,7 +20,7 @@ lst_TGA_data= pd.read_pickle("pickle_jar/TGA_ex_data.pkl")
 # Check that you have the same number of data files and meta files
 if len(lst_TGA_data) != len(Meta_df):
     print('Error meta and expermental data do not match')
-#%% Calculate all the differnt weight loss
+#%% Find values for the weight at T of interest
 
 Num_of_records = len(lst_TGA_data)
 M30 = [0]*Num_of_records #make list of "0"s with same length as data
@@ -68,6 +68,8 @@ Mass_df['180C'] = M180
 Mass_df['550C'] = M550
 Mass_df['1,000C'] =M1000
 #%% Export data frame
+#Mass_df has the mass at select T for all of the "good" data that was
+#imported in the TGA_Mass_loss_data_import
 Mass_df.to_csv("output_data/TGA_Mass_at_selct_T.csv")
 pd.to_pickle(Mass_df,"pickle_jar/Mass_df.pkl" )
 
@@ -123,6 +125,7 @@ dat_length = range(len(Meta_df))
 chem_length =range(len(chem_lable)-1) # range of lenth = number of data labes in pc_chem
 
 chem_df = pd.DataFrame(columns=[chem_lable], index=dat_length)
+chem_df.columns = chem_lable
 r_name = range(len(pc_chem))
 
 # using the 'PC name" asign vlaues from pc_chem to chem_df
@@ -132,14 +135,39 @@ for x in dat_length:
             for y in [0,1,2,3]:
                 chem_df.iloc[x,y] = pc_chem.iloc[z,(y+1)]
     
+#%% get mineral info (Metalic content as represented as oxide used in cement 
+# shorthand) based on "PC name"
+pc_mineral = pd.read_csv('input_data/Weight_percent_oxides_in_PC.csv')
+
+# get labes of above data and make empty df with lenght that matches data
+min_lable = list(pc_mineral)
+min_lable = min_lable[1:] # removeds first row form list
+dat_length = range(len(Meta_df))
+mineral_length =range(len(min_lable)-1) # range of lenth = number of data labes in pc_chem
+
+mineral_df = pd.DataFrame(columns=[min_lable], index=dat_length)
+mineral_df.columns = min_lable
+r_name = range(len(pc_mineral))
+
+# using the 'PC name" asign vlaues from pc_mineral to chem_df
+for x in dat_length:
+    for z in r_name:
+        if Meta_df.loc[x,'PC_Name'] == pc_mineral.loc[z,'Name']:
+            for y in [0,1,2,3]:
+                mineral_df.iloc[x,y] = pc_mineral.iloc[z,(y+1)]
+
+
 
 
 
 
 #%% Export more data frame
+# # fractional weight loss for teperature ranges of interest
 # fl_df.to_csv("output_data/TGA_fractional_weight_loss.csv")
 # pd.to_pickle(fl_df,"pickle_jar/TGA_fractional_weight_loss.pkl" )
+# # has the target mole percent of Mg, Al, Si, & P for each sample
 # pd.to_pickle(chem_df, "pickle_jar/TGA_target_chem_comp.pkl")
+# pd.to_pickle(mineral_df, "pickle_jar/ICP_value_for_TGA_dat.pkl")
 
 #%% Split out data sets
 
@@ -152,6 +180,24 @@ Index_set_1ml_1g = pd.read_csv('input_data/Sample_set_1ml_per_1gram.csv')
 Data_set_1ml_1g = fl_df.loc[Index_set_1ml_1g['File number']]
 Meta_set_1ml_1g = Meta_df.loc[Index_set_1ml_1g['File number']]
 Chem_set_1ml_1g = chem_df.loc[Index_set_1ml_1g['File number']]
+
+# get list of file numbers for the data set that of samples activeate with
+# 1ml and 0.5ml 10M NaOH per gram of cement precourser  aged for 24hrs at 35C before drying
+# at time of progam is all of the good TGA data we have
+Index_set_good = pd.read_csv('input_data/Sample_set_1ml_and_halfml_per_1gramPC.csv')
+
+# creates df with the rows matching the index (file number) improrted in the above lines
+Data_set_good = fl_df.loc[Index_set_good['File number']]
+Meta_set_good = Meta_df.loc[Index_set_good['File number']]
+Mineral_set_good = mineral_df.loc[Index_set_good['File number']]
+
+#%% Export even more data frames
+
+# #Data set with all the 1mL o.5ml and Centroid v. NaOH concentration data
+# #For samples activated with NaOH
+# pd.to_pickle(Data_set_good, "pickle_jar/TGA_data_good.pkl") # wieght loss data
+# pd.to_pickle(Meta_set_good, "pickle_jar/Meta_set_good.pkl")
+# pd.to_pickle(Mineral_set_good, "pickle_jar/Mineral_set_good.pkl")            
 
 #%% Make some plots
 
@@ -180,6 +226,14 @@ for n in [0,1,2,3]:
     svg_name_path = 'output_data/figures/' + chem_lable[n] + '_wt_loss.svg'
     # fig.savefig(svg_name_path, transparent=False, bbox_inches="tight")
 
+#%% Do some stats
 
+# Make df with loose bound and unbound water 
+# then calculate Pearson Correlation Coeffiecient
+df_luwat = fl_df.loc[:,['Unbound_water','loose_bound_water']] #, ]
+print(df_luwat.corr())
 
+#%% Figure some stuff out
+
+fl_df.hist()
 
