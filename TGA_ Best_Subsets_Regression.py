@@ -28,7 +28,7 @@ dat = dat.apply(pd.to_numeric) #converts all values to numbers
 #%% pick x and y data
 
 X= dat[['MgO', 'Al2O3', 'SiO2', 'P2O5', 'Concentration(mM)', 'L/S']]
-y = dat[['Bound_water']]
+y = dat[['Tight_bound_water']] #change this to change your responce variable
 
 #%% Try models with 1 predictor all the way to p predictors.
 ct = 0
@@ -70,12 +70,12 @@ method_compare = [pd.DataFrame([[ct,f'{(toc-tic):1.4f}']],\
                                columns=['# Models','Time(s)'], index=pd.Index(['Exhaustive']))]
     
 #%% Extract some model stats so we can compare.
-num_p = range(1, len(best_models)+1)
-ssr = [ best_models[i]['model'].ssr for i in range(len(best_models)) ]
-r2 = [ best_models[i]['model'].rsquared for i in range(len(best_models)) ]
-r2adj = [ best_models[i]['model'].rsquared_adj for i in range(len(best_models)) ]
-aic = [ best_models[i]['model'].aic for i in range(len(best_models)) ]
-bic = [ best_models[i]['model'].bic for i in range(len(best_models)) ]
+num_p_B = range(1, len(best_models)+1)
+ssr_B = [ best_models[i]['model'].ssr for i in range(len(best_models)) ]
+r2_B = [ best_models[i]['model'].rsquared for i in range(len(best_models)) ]
+r2adj_B = [ best_models[i]['model'].rsquared_adj for i in range(len(best_models)) ]
+aic_B = [ best_models[i]['model'].aic for i in range(len(best_models)) ]
+bic_B = [ best_models[i]['model'].bic for i in range(len(best_models)) ]
 
 
 #%% Extract some model stats for all models so we can compare.
@@ -94,7 +94,7 @@ mod_stat_df['r^2adj'] = r2adj
 mod_stat_df['AIC'] = aic
 mod_stat_df['BIC'] = bic
 
-mod_stat_df.to_csv("output_data/Bound_water_best_subset_linear_regression.csv")
+# mod_stat_df.to_csv("output_data/Tight_bound_water_best_subset_linear_regression.csv")
 
 #%% Create a plotting function to plot the stats
 def plot_stat(x, y, name, ax):
@@ -114,5 +114,8 @@ fig = plt.figure(figsize=(20,10))
 plt.rcParams.update({'font.size': 16})
 gs = gridspec.GridSpec(1, 2, width_ratios=[1, 1])
 
-plot_stat(num_p, ssr, 'SSR', plt.subplot(gs[0]))
-plot_stat(num_p, r2, 'R$^2$', plt.subplot(gs[1]))
+plot_stat(num_p_B, ssr_B, 'SSR', plt.subplot(gs[0]))
+plot_stat(num_p_B, r2adj_B, 'R$^2$ adjusted', plt.subplot(gs[1]))
+
+#%% Gett details of best model
+print(all_models[44].summary())
