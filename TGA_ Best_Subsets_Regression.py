@@ -36,8 +36,9 @@ best_models = []
 best_x_list = []
 all_models = []
 mod_name = []
+var_ct = [] #Used to count index the number of variables in a model
 tic = time.time()
-
+X = sm.add_constant(X)
 for p in range(1, (len(X.columns)+1)):
 
     result_mod_p = []
@@ -47,6 +48,7 @@ for p in range(1, (len(X.columns)+1)):
         mod = sm.OLS(y, X[list(comb)]).fit() # Note no intercept included by OLS since we are not using formula.api 
         result_mod_p.append({'model': mod, 'ssr': mod.ssr}) # Note that mod.ssr is equivalent to ((mod.predict( X[list(comb)] ) - y['CoolElec']) ** 2).sum()
         all_models.append(mod)
+        var_ct.append(p)
         mod_name.append(mod.params.index)
         ct += 1
 
@@ -88,34 +90,45 @@ aic = [ all_models[i].aic for i in ct2]
 bic = [ all_models[i].bic for i in ct2]
 
 mod_stat_df = pd.DataFrame({'x_values':mod_name})
+mod_stat_df['# of Var'] = var_ct
 mod_stat_df['ssr'] = ssr
 mod_stat_df['r^2'] = r2
 mod_stat_df['r^2adj'] = r2adj
 mod_stat_df['AIC'] = aic
 mod_stat_df['BIC'] = bic
 
-# mod_stat_df.to_csv("output_data/Tight_bound_water_best_subset_linear_regression.csv")
+#Warning writes file
+# mod_stat_df.to_csv("output_data/Tight_bound_water_best_subset_linear_regression_and_C.csv")
 
 #%% Create a plotting function to plot the stats
-def plot_stat(x, y, name, ax):
-    
+def plot_stat(x, y, x_b, y_b, name, ax):
+    # x and y are the best fit for each # of prdictors 
+    #data and x_b and y_b are the other models
     ax.grid(True)
-    ax.plot(x, y, color = 'b', marker = 'o', label=name)
+    ax.plot(x, y, color = 'b', marker = 'o', label=name,)
+    ax.plot(x_b, y_b, color = 'k', marker = 'o', label=name, ls='')
     ax.plot(np.argmax(y)+1, max(y), color = 'm', marker = 'D', markersize = '13' ) # label max point
     ax.plot(np.argmin(y)+1, min(y), color = 'c', marker = 'D', markersize = '13') # label min point
     ax.axhline(y=min(y), color='c', linestyle='-.') #min line for ref
     ax.axhline(y=max(y), color='m', linestyle='-.') #max line for ref
     ax.set_xlabel('# of Predictors')
     ax.set_ylabel(name)
+    ax.set_xlim([0,p])
     
 # %%Plot the sum of squared residuals and Rsquared
 # not currently working
-fig = plt.figure(figsize=(20,10))
+fig = plt.figure(figsize=(20,30))
 plt.rcParams.update({'font.size': 16})
-gs = gridspec.GridSpec(1, 2, width_ratios=[1, 1])
+gs = gridspec.GridSpec(3, 2, width_ratios=[1, 1])
 
-plot_stat(num_p_B, ssr_B, 'SSR', plt.subplot(gs[0]))
-plot_stat(num_p_B, r2adj_B, 'R$^2$ adjusted', plt.subplot(gs[1]))
+plot_stat(num_p_B, r2_B, var_ct, r2, 'R$^2$', plt.subplot(gs[0]))
+plot_stat(num_p_B, r2adj_B, var_ct, r2adj, 'R$^2$ adjusted', plt.subplot(gs[1]))
+plot_stat(num_p_B, bic_B, var_ct, bic, 'BIC', plt.subplot(gs[2]))
+plot_stat(num_p_B, aic_B, var_ct, aic, 'AIC', plt.subplot(gs[3]))
+plot_stat(num_p_B, ssr_B, var_ct, ssr, 'SSR', plt.subplot(gs[4]))
+
+#Warning writes file
+# fig.savefig('output_data/Tight_bound_water_best_subset_linear_regression.svg', transparent=False, bbox_inches="tight")
 
 #%% Gett details of best model
 print(all_models[44].summary())
