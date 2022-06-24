@@ -1,0 +1,29 @@
+                                 OLS Regression Results                                
+=======================================================================================
+Dep. Variable:            Bound_water   R-squared (uncentered):                   0.992
+Model:                            OLS   Adj. R-squared (uncentered):              0.991
+Method:                 Least Squares   F-statistic:                              1002.
+Date:                Fri, 24 Jun 2022   Prob (F-statistic):                    2.46e-25
+Time:                        18:22:00   Log-Likelihood:                          71.065
+No. Observations:                  27   AIC:                                     -136.1
+Df Residuals:                      24   BIC:                                     -132.2
+Df Model:                           3                                                  
+Covariance Type:            nonrobust                                                  
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+MgO            0.3496      0.039      8.944      0.000       0.269       0.430
+Al2O3          0.2887      0.030      9.566      0.000       0.226       0.351
+L/S            0.0005   7.39e-05      6.827      0.000       0.000       0.001
+==============================================================================
+Omnibus:                        1.506   Durbin-Watson:                   1.931
+Prob(Omnibus):                  0.471   Jarque-Bera (JB):                1.115
+Skew:                          -0.489   Prob(JB):                        0.573
+Kurtosis:                       2.815   Cond. No.                     1.58e+03
+==============================================================================
+
+Notes:
+[1] R² is computed without centering (uncentered) since the model does not contain a constant.
+[2] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[3] The condition number is large, 1.58e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.

@@ -98,7 +98,7 @@ mod_stat_df['AIC'] = aic
 mod_stat_df['BIC'] = bic
 
 #Warning writes file
-# mod_stat_df.to_csv("output_data/Tight_bound_water_best_subset_linear_regression_and_C.csv")
+# mod_stat_df.to_csv("output_data/xxx_best_subset_linear_regression_and_C.csv")
 
 #%% Create a plotting function to plot the stats
 def plot_stat(x, y, x_b, y_b, name, ax):
@@ -128,7 +128,18 @@ plot_stat(num_p_B, aic_B, var_ct, aic, 'AIC', plt.subplot(gs[3]))
 plot_stat(num_p_B, ssr_B, var_ct, ssr, 'SSR', plt.subplot(gs[4]))
 
 #Warning writes file
-# fig.savefig('output_data/Tight_bound_water_best_subset_linear_regression.svg', transparent=False, bbox_inches="tight")
+# fig.savefig('output_data/xxx_best_subset_linear_regression.svg', transparent=False, bbox_inches="tight")
 
 #%% Gett details of best model
-print(all_models[44].summary())
+
+# reportFile = open('output_data/xxx_Best_OLR_.txt', 'w')
+# print(all_models[86].summary(), file=reportFile)
+# reportFile.close()
+
+# #Use df to store info from summary
+# df1 = pd.read_html(all_models[44].summary().tables[0].as_html(),header=0,index_col=0)[0]
+# df2 = pd.read_html(all_models[44].summary().tables[1].as_html(),header=0,index_col=0)[0]
+# df3 = pd.read_html(all_models[44].summary().tables[2].as_html(),header=0,index_col=0)[0]
+# print(df1)
+# print(df2)
+# print(df3)

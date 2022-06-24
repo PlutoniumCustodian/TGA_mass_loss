@@ -1,0 +1,30 @@
+                                 OLS Regression Results                                
+=======================================================================================
+Dep. Variable:      Tight_bound_water   R-squared (uncentered):                   0.990
+Model:                            OLS   Adj. R-squared (uncentered):              0.989
+Method:                 Least Squares   F-statistic:                              593.6
+Date:                Fri, 24 Jun 2022   Prob (F-statistic):                    7.69e-23
+Time:                        18:26:11   Log-Likelihood:                          83.233
+No. Observations:                  27   AIC:                                     -158.5
+Df Residuals:                      23   BIC:                                     -153.3
+Df Model:                           4                                                  
+Covariance Type:            nonrobust                                                  
+=====================================================================================
+                        coef    std err          t      P>|t|      [0.025      0.975]
+-------------------------------------------------------------------------------------
+MgO                   0.2578      0.019     13.396      0.000       0.218       0.298
+Al2O3                 0.2547      0.020     12.598      0.000       0.213       0.297
+P2O5                 -0.0342      0.013     -2.558      0.018      -0.062      -0.007
+Concentration(mM)  2.998e-05   9.39e-06      3.193      0.004    1.06e-05    4.94e-05
+==============================================================================
+Omnibus:                        2.072   Durbin-Watson:                   2.241
+Prob(Omnibus):                  0.355   Jarque-Bera (JB):                1.143
+Skew:                          -0.494   Prob(JB):                        0.565
+Kurtosis:                       3.201   Cond. No.                     6.19e+03
+==============================================================================
+
+Notes:
+[1] R² is computed without centering (uncentered) since the model does not contain a constant.
+[2] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[3] The condition number is large, 6.19e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
