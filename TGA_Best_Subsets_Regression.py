@@ -115,8 +115,8 @@ def plot_stat(x, y, x_b, y_b, name, ax):
     ax.set_ylabel(name)
     ax.set_xlim([0,p])
     
-# %%Plot the sum of squared residuals and Rsquared
-# not currently working
+# %%Plot the metrics for judging model
+
 fig = plt.figure(figsize=(20,30))
 plt.rcParams.update({'font.size': 16})
 gs = gridspec.GridSpec(3, 2, width_ratios=[1, 1])
@@ -132,14 +132,17 @@ plot_stat(num_p_B, ssr_B, var_ct, ssr, 'SSR', plt.subplot(gs[4]))
 
 #%% Gett details of best model
 
+n = 13 #Change to be the index of model you want
+
+print(all_models[n].summary())
 # reportFile = open('output_data/xxx_Best_OLR_.txt', 'w')
-# print(all_models[86].summary(), file=reportFile)
+# print(all_models[n].summary(), file=reportFile)
 # reportFile.close()
 
-# #Use df to store info from summary
-# df1 = pd.read_html(all_models[44].summary().tables[0].as_html(),header=0,index_col=0)[0]
-# df2 = pd.read_html(all_models[44].summary().tables[1].as_html(),header=0,index_col=0)[0]
-# df3 = pd.read_html(all_models[44].summary().tables[2].as_html(),header=0,index_col=0)[0]
-# print(df1)
-# print(df2)
-# print(df3)
+#Use df to store info from summary
+df1 = pd.read_html(all_models[n].summary().tables[0].as_html(),header=0,index_col=0)[0]
+df2 = pd.read_html(all_models[n].summary().tables[1].as_html(),header=0,index_col=0)[0]
+df3 = pd.read_html(all_models[n].summary().tables[2].as_html(),header=0,index_col=0)[0]
+print(df1)
+print(df2)
+print(df3)
