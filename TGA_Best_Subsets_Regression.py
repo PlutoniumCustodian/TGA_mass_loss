@@ -24,11 +24,17 @@ dat = pd.concat([Mineral_data, TGA_data], axis=1)
 dat['Concentration(mM)'] = Meta_data.loc[:,'Concentration(mM)']
 dat['L/S'] = Meta_data.loc[:,'L/S']
 dat = dat.apply(pd.to_numeric) #converts all values to numbers
-
+# dat.to_csv("output_data/22_07_26data.csv")
 #%% pick x and y data
 
 X= dat[['MgO', 'Al2O3', 'SiO2', 'P2O5', 'Concentration(mM)', 'L/S']]
 y = dat[['Tight_bound_water']] #change this to change your responce variable
+
+
+
+#%% Cross corrolation
+
+
 
 #%% Try models with 1 predictor all the way to p predictors.
 ct = 0
