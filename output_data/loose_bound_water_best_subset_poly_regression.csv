@@ -1,0 +1,93 @@
+,x_values,# of Var,ssr,r^2,r^2adj,AIC,BIC
+0,"Index(['1'], dtype='object')",1,0.009760107,0,0,-135.3601158,-134.064279
+1,"Index(['Concentration(mM)'], dtype='object')",1,0.029244072,0.786803527,0.778603662,-105.7310308,-104.435194
+2,"Index(['L/S'], dtype='object')",1,0.006989138,0.949047467,0.947087754,-144.3766621,-143.0808253
+3,"Index(['Concentration(mM)^2'], dtype='object')",1,0.05464345,0.601635823,0.586314123,-88.85191456,-87.5560777
+4,"Index(['Concentration(mM) L/S'], dtype='object')",1,0.029359305,0.785963449,0.777731274,-105.6248494,-104.3290125
+5,"Index(['L/S^2'], dtype='object')",1,0.010492809,0.923504841,0.920562719,-133.4056714,-132.1098345
+6,"Index(['1', 'Concentration(mM)'], dtype='object')",2,0.00963191,0.013134774,-0.026339835,-133.7171044,-131.1254307
+7,"Index(['1', 'L/S'], dtype='object')",2,0.00693185,0.289777226,0.261368315,-142.5988838,-140.0072101
+8,"Index(['1', 'Concentration(mM)^2'], dtype='object')",2,0.009497244,0.026932391,-0.011990314,-134.0972621,-131.5055884
+9,"Index(['1', 'Concentration(mM) L/S'], dtype='object')",2,0.009616417,0.014722141,-0.024688973,-133.7605687,-131.168895
+10,"Index(['1', 'L/S^2'], dtype='object')",2,0.006786814,0.304637366,0.27682286,-143.1698043,-140.5781305
+11,"Index(['Concentration(mM)', 'L/S'], dtype='object')",2,0.0055874,0.959266483,0.956007801,-148.4204286,-145.8287548
+12,"Index(['Concentration(mM)', 'Concentration(mM)^2'], dtype='object')",2,0.01013768,0.926093825,0.920181331,-132.3353104,-129.7436367
+13,"Index(['Concentration(mM)', 'Concentration(mM) L/S'], dtype='object')",2,0.02858554,0.791604391,0.774932742,-104.3459804,-101.7543067
+14,"Index(['Concentration(mM)', 'L/S^2'], dtype='object')",2,0.010377088,0.924348476,0.918296354,-131.7050982,-129.1134245
+15,"Index(['L/S', 'Concentration(mM)^2'], dtype='object')",2,0.005353605,0.960970905,0.957848577,-149.5745131,-146.9828394
+16,"Index(['L/S', 'Concentration(mM) L/S'], dtype='object')",2,0.005658808,0.958745901,0.955445573,-148.07755,-145.4858762
+17,"Index(['L/S', 'L/S^2'], dtype='object')",2,0.006970609,0.949182547,0.945117151,-142.4483367,-139.856663
+18,"Index(['Concentration(mM)^2', 'Concentration(mM) L/S'], dtype='object')",2,0.015714239,0.885439336,0.876274483,-120.5009914,-117.9093176
+19,"Index(['Concentration(mM)^2', 'L/S^2'], dtype='object')",2,0.009309555,0.932131058,0.926701543,-134.6361929,-132.0445192
+20,"Index(['Concentration(mM) L/S', 'L/S^2'], dtype='object')",2,0.008838533,0.935564926,0.93041012,-136.0380439,-133.4463702
+21,"Index(['1', 'Concentration(mM)', 'L/S'], dtype='object')",3,0.005522367,0.43418995,0.387039112,-146.736531,-142.8490204
+22,"Index(['1', 'Concentration(mM)', 'Concentration(mM)^2'], dtype='object')",3,0.008852569,0.092984488,0.017399862,-133.9952005,-130.1076899
+23,"Index(['1', 'Concentration(mM)', 'Concentration(mM) L/S'], dtype='object')",3,0.005942471,0.391146919,0.340409162,-144.7569296,-140.869419
+24,"Index(['1', 'Concentration(mM)', 'L/S^2'], dtype='object')",3,0.005285006,0.458509466,0.413385255,-147.9227176,-144.035207
+25,"Index(['1', 'L/S', 'Concentration(mM)^2'], dtype='object')",3,0.005349748,0.451876122,0.406199132,-147.5939728,-143.7064623
+26,"Index(['1', 'L/S', 'Concentration(mM) L/S'], dtype='object')",3,0.005570167,0.429292394,0.381733427,-146.5038292,-142.6163186
+27,"Index(['1', 'L/S', 'L/S^2'], dtype='object')",3,0.006587075,0.325102232,0.268860751,-141.9763553,-138.0888447
+28,"Index(['1', 'Concentration(mM)^2', 'Concentration(mM) L/S'], dtype='object')",3,0.005453962,0.441198577,0.394631792,-147.0730657,-143.1855551
+29,"Index(['1', 'Concentration(mM)^2', 'L/S^2'], dtype='object')",3,0.005108183,0.476626368,0.433011899,-148.8415269,-144.9540163
+30,"Index(['1', 'Concentration(mM) L/S', 'L/S^2'], dtype='object')",3,0.005215268,0.465654593,0.421125809,-148.281362,-144.3938514
+31,"Index(['Concentration(mM)', 'L/S', 'Concentration(mM)^2'], dtype='object')",3,0.005300611,0.961357244,0.9565269,-147.8431113,-143.9556007
+32,"Index(['Concentration(mM)', 'L/S', 'Concentration(mM) L/S'], dtype='object')",3,0.005531497,0.959674031,0.954633285,-146.6919302,-142.8044196
+33,"Index(['Concentration(mM)', 'L/S', 'L/S^2'], dtype='object')",3,0.005570934,0.959386524,0.954309839,-146.5001147,-142.6126041
+34,"Index(['Concentration(mM)', 'Concentration(mM)^2', 'Concentration(mM) L/S'], dtype='object')",3,0.007527263,0.9451244,0.93826495,-138.373955,-134.4864444
+35,"Index(['Concentration(mM)', 'Concentration(mM)^2', 'L/S^2'], dtype='object')",3,0.005718608,0.95830994,0.953098683,-145.7937193,-141.9062087
+36,"Index(['Concentration(mM)', 'Concentration(mM) L/S', 'L/S^2'], dtype='object')",3,0.005467679,0.96013928,0.95515669,-147.0052458,-143.1177352
+37,"Index(['L/S', 'Concentration(mM)^2', 'Concentration(mM) L/S'], dtype='object')",3,0.005343457,0.961044888,0.956175499,-147.6257427,-143.7382322
+38,"Index(['L/S', 'Concentration(mM)^2', 'L/S^2'], dtype='object')",3,0.005349151,0.961003376,0.956128798,-147.5969858,-143.7094752
+39,"Index(['L/S', 'Concentration(mM) L/S', 'L/S^2'], dtype='object')",3,0.005452821,0.960247596,0.955278545,-147.0787142,-143.1912036
+40,"Index(['Concentration(mM)^2', 'Concentration(mM) L/S', 'L/S^2'], dtype='object')",3,0.00832625,0.939299592,0.931712041,-135.6501517,-131.7626411
+41,"Index(['1', 'Concentration(mM)', 'L/S', 'Concentration(mM)^2'], dtype='object')",4,0.005290664,0.457929723,0.387224904,-145.8938257,-140.7104782
+42,"Index(['1', 'Concentration(mM)', 'L/S', 'Concentration(mM) L/S'], dtype='object')",4,0.005522153,0.434211879,0.360413429,-144.7375775,-139.55423
+43,"Index(['1', 'Concentration(mM)', 'L/S', 'L/S^2'], dtype='object')",4,0.004990725,0.488660829,0.421964415,-147.4696144,-142.2862669
+44,"Index(['1', 'Concentration(mM)', 'Concentration(mM)^2',
+       'Concentration(mM) L/S'],
+      dtype='object')",4,0.005422585,0.4444134,0.371945583,-145.2288471,-140.0454996
+45,"Index(['1', 'Concentration(mM)', 'Concentration(mM)^2', 'L/S^2'], dtype='object')",4,0.005053171,0.482262776,0.414731833,-147.1338771,-141.9505296
+46,"Index(['1', 'Concentration(mM)', 'Concentration(mM) L/S', 'L/S^2'], dtype='object')",4,0.005207179,0.466483453,0.396894338,-146.3232761,-141.1399286
+47,"Index(['1', 'L/S', 'Concentration(mM)^2', 'Concentration(mM) L/S'], dtype='object')",4,0.005261321,0.460936195,0.390623524,-146.043992,-140.8606445
+48,"Index(['1', 'L/S', 'Concentration(mM)^2', 'L/S^2'], dtype='object')",4,0.004788072,0.509424272,0.445436134,-148.5888577,-143.4055102
+49,"Index(['1', 'L/S', 'Concentration(mM) L/S', 'L/S^2'], dtype='object')",4,0.004828582,0.505273675,0.440744154,-148.3613806,-143.1780332
+50,"Index(['1', 'Concentration(mM)^2', 'Concentration(mM) L/S', 'L/S^2'], dtype='object')",4,0.005100753,0.477387625,0.409220794,-146.8808275,-141.6974801
+51,"Index(['Concentration(mM)', 'L/S', 'Concentration(mM)^2',
+       'Concentration(mM) L/S'],
+      dtype='object')",4,0.005272589,0.961561534,0.954876584,-145.9862288,-140.8028813
+52,"Index(['Concentration(mM)', 'L/S', 'Concentration(mM)^2', 'L/S^2'], dtype='object')",4,0.005232839,0.961851316,0.955216762,-146.1905487,-141.0072013
+53,"Index(['Concentration(mM)', 'L/S', 'Concentration(mM) L/S', 'L/S^2'], dtype='object')",4,0.005385006,0.960741985,0.953914504,-145.4166111,-140.2332637
+54,"Index(['Concentration(mM)', 'Concentration(mM)^2', 'Concentration(mM) L/S',
+       'L/S^2'],
+      dtype='object')",4,0.005220136,0.961943929,0.955325482,-146.2561762,-141.0728287
+55,"Index(['L/S', 'Concentration(mM)^2', 'Concentration(mM) L/S', 'L/S^2'], dtype='object')",4,0.005341197,0.961061361,0.954289424,-145.6371627,-140.4538153
+56,"Index(['1', 'Concentration(mM)', 'L/S', 'Concentration(mM)^2',
+       'Concentration(mM) L/S'],
+      dtype='object')",5,0.005256427,0.461437586,0.363517147,-144.0691168,-137.5899324
+57,"Index(['1', 'Concentration(mM)', 'L/S', 'Concentration(mM)^2', 'L/S^2'], dtype='object')",5,0.004715731,0.516836169,0.428988199,-146.999902,-140.5207177
+58,"Index(['1', 'Concentration(mM)', 'L/S', 'Concentration(mM) L/S', 'L/S^2'], dtype='object')",5,0.004705451,0.517889445,0.43023298,-147.0588251,-140.5796408
+59,"Index(['1', 'Concentration(mM)', 'Concentration(mM)^2',
+       'Concentration(mM) L/S', 'L/S^2'],
+      dtype='object')",5,0.005041658,0.483442345,0.389522771,-145.1954618,-138.7162775
+60,"Index(['1', 'L/S', 'Concentration(mM)^2', 'Concentration(mM) L/S', 'L/S^2'], dtype='object')",5,0.004785484,0.50968937,0.420541983,-146.6034519,-140.1242676
+61,"Index(['Concentration(mM)', 'L/S', 'Concentration(mM)^2',
+       'Concentration(mM) L/S', 'L/S^2'],
+      dtype='object')",5,0.005176133,0.96226472,0.953688519,-144.484735,-138.0055507
+62,"Index(['1', 'Concentration(mM)', 'L/S', 'Concentration(mM)^2',
+       'Concentration(mM) L/S', 'L/S^2'],
+      dtype='object')",6,0.004582792,0.530456811,0.418660813,-145.7719807,-137.9969595
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
