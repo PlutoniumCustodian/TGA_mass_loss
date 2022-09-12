@@ -28,7 +28,7 @@ dat = dat.apply(pd.to_numeric) #converts all values to numbers
 #%% pick x and y data
 
 X= dat[['MgO', 'Al2O3', 'SiO2', 'P2O5', 'Concentration(mM)', 'L/S']]
-y = dat[['Tight_bound_water']] #change this to change your responce variable
+y = dat['Unbound_water'] #change this to change your responce variable
 
 
 
@@ -104,7 +104,7 @@ mod_stat_df['AIC'] = aic
 mod_stat_df['BIC'] = bic
 
 #Warning writes file
-# mod_stat_df.to_csv("output_data/xxx_best_subset_linear_regression_and_C.csv")
+#mod_stat_df.to_csv("output_data/22_9_12_unbound_best_subset_linear_regression_and_C.csv")
 
 #%% Create a plotting function to plot the stats
 def plot_stat(x, y, x_b, y_b, name, ax):
@@ -138,7 +138,7 @@ plot_stat(num_p_B, ssr_B, var_ct, ssr, 'SSR', plt.subplot(gs[4]))
 
 #%% Gett details of best model
 
-n = 13 #Change to be the index of model you want
+n = 6 #Change to be the index of model you want
 
 print(all_models[n].summary())
 # reportFile = open('output_data/xxx_Best_OLR_.txt', 'w')
