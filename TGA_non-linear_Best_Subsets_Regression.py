@@ -173,4 +173,3 @@ ax.set_aspect('equal')  # very helpful to show y = x relationship
 # add labels and legend
 ax.set_xlabel('Observation')
 ax.set_ylabel('Prediction')
-ax.legend()
