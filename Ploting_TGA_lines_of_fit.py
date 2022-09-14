@@ -34,7 +34,8 @@ Zdat = dat[['Tight_bound_water']] * 100  # change this to change your responce v
 
 # calculte the line of fit
 def Zfit(MgO, Al2O3):
-    return MgO * 0.2685 + Al2O3 * 0.2912
+    x = MgO * 0.2685 + Al2O3 * 0.2912
+    return x
 
 
 Xov = []
@@ -58,31 +59,44 @@ for i in range(len(Zdat)):
         Yun.append(Ydat.iloc[i, 0])
         Zun.append(Zdat.iloc[i, 0])
 
-x = np.linspace(5, 50, 5)
-y = np.linspace(5, 50, 5)
+# caluclate the Z intersept with the fit surface        
+ZovInt = Zfit(np.asarray(Xov), np.asarray(Yov))
+ZunInt = Zfit(np.asarray(Xun), np.asarray(Yun))
+# make gride to display the curve fit
+x = np.linspace(0, 50, 5)
+y = np.linspace(0, 50, 5)
 X, Y = np.meshgrid(x, y)
 Z = Zfit(X, Y)
 # %% 3D plot of fit
 
-
-fig = plt.figure()
+fig = plt.figure(figsize=(8, 8))
 ax = plt.axes(projection='3d')
 
-# ax.contour3D(X, Y, Z, 150, cmap='gray', alpha=.5) #cmap='Wistia',
-# plt.markers.MarkerStyle(marker='x')
-ax.scatter3D(Xun, Yun, Zun, color='#001282')  # marker= '*', s=50
-
+for i in range(len(Zun)):
+    ax.plot3D([ Xun[i], Xun[i] ], [ Yun[i], Yun[i] ], [ Zun[i], ZunInt[i] ], color='#001282')
+    
+for i in range(len(Zov)):
+    ax.plot3D([ Xov[i], Xov[i] ], [ Yov[i], Yov[i] ], [ ZovInt[i], Zov[i] ], color='#99004d')
+    
+# plot point under (lower z vlaue) the fit curve
+ax.plot3D(Xun, Yun, Zun, color='#001282', linestyle='', marker='.')
+# plot the fit surface
 ax.plot_surface(X, Y, Z, color='gray', alpha=.3, edgecolor='black')
 
-ax.scatter3D(Xov, Yov, Zov, color='#99004d')  # c=Zdat, cmap='winter')
-# ax.plot3D(Xdat, Ydat, Zfit(Xdat,Ydat), 'gray')
+# plot point over (larger z vlaue) the fit curve
+ax.plot3D(Xov, Yov, Zov, color='#99004d', linestyle='', marker='.')
+
+# # ax.plot3D(Xdat, Ydat, Zfit(Xdat,Ydat), 'gray')
+
 ax.set_xlabel('MgO (wt. %)')
 ax.set_ylabel('Al2O3 (wt. %)')
 ax.set_zlabel('Weight Loss (%)')
-ax.view_init(25, -70)
+ax.set_xlim([0,50])
+ax.set_ylim([0,50])
+ax.view_init(30, -60)
 
 # # Uncomment this line to save the figure.
-fig.savefig('output_data/figures/TightWater_curve.pdf', transparent=True, bbox_inches="tight")
+fig.savefig('output_data/figures/TightWater_curve_V2.pdf', transparent=True, bbox_inches="tight")
 plt.show(block=True)
 
 # %% plot predicted vs observed
