@@ -69,7 +69,7 @@ X, Y = np.meshgrid(x, y)
 Z = Zfit(X, Y)
 # %% 3D plot of fit
 
-fig = plt.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(6, 6))
 ax = plt.axes(projection='3d')
 
 for i in range(len(Zun)):
@@ -96,7 +96,7 @@ ax.set_ylim([0,50])
 ax.view_init(30, -60)
 
 # # Uncomment this line to save the figure.
-fig.savefig('output_data/figures/TightWater_curve_V2.pdf', transparent=True, bbox_inches="tight")
+# fig.savefig('output_data/figures/TightWater_curve_V2.pdf', transparent=True, bbox_inches="tight")
 plt.show(block=True)
 
 # %% plot predicted vs observed
