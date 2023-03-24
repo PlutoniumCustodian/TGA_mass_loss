@@ -11,63 +11,49 @@ Created on Tue Jun 14 10:39:16 2022
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from statistics import mean
 
 # get varialble from pickle jar
 Meta_df = pd.read_pickle("pickle_jar/Meta_df.pkl")
 
-lst_TGA_data= pd.read_pickle("pickle_jar/TGA_ex_data.pkl")
+lst_TGA_data= pd.read_pickle("pickle_jar/TGA_ex_data.pkl") #creates list of
+#data frames each data frame has one TGA scan
 
 # Check that you have the same number of data files and meta files
 if len(lst_TGA_data) != len(Meta_df):
     print('Error meta and expermental data do not match')
 #%% Find values for the weight at T of interest
 
-Num_of_records = len(1000-30)
-M30 = [0]*Num_of_records #make list of "0"s with same length as data
-M40 = [0]*Num_of_records
-M105 = [0]*Num_of_records
-M180 = [0]*Num_of_records
-M550 = [0]*Num_of_records
-M1000 = [0]*Num_of_records
-M30_1000 = [0]*Num_of_records
-
+Num_of_records = len(lst_TGA_data)
+Mass = [0]*Num_of_records #make list of "0"s with same length as data
+Tmin = 30
+Tmax =1000
+TRange = range(Tmin, Tmax+1) #make a list with one interger for 30-1000C
+IntigerT = list(TRange)
+IntigerM = [0]*len(IntigerT)
 #Get TGA data out of the list containing dataframes
-for x in range(Num_of_records):
-    df = lst_TGA_data[x]
-    TGA_T = np.array(df.loc[:,'Temperature'])
-    TGA_M = np.array(df.iloc[:, 2]) # call by index because the are 2 "weight" column
+# for x in range(Num_of_records):
+x=0   
+df = lst_TGA_data[x] #gets one TGA rocord
+TGA_T = np.array(df.loc[:,'Temperature'])
+TGA_M = np.array(df.iloc[:, 2]) # call by index because the are 2 "weight" column
 
-    # find index of first time T reaches 30C
-    inx30 = next(x for x, val in enumerate(TGA_T)
-                                  if val >= 30 )
-    M40[x] = TGA_M[inx30]
-    inx40 = next(x for x, val in enumerate(TGA_T)
-                                  if val >= 40 )
-    M30[x] = TGA_M[inx30]
-    # find index of first time T reaches 105C
-    inx105 = next(x for x, val in enumerate(TGA_T)
-                                  if val >= 105 )
-    M105[x] = TGA_M[inx105]
-    # find index of first time T reaches 180C
-    inx180 = next(x for x, val in enumerate(TGA_T)
-                                  if val >= 180 )
-    M180[x] = TGA_M[inx180]
-    # find index of first time T reaches 550C
-    inx550 = next(x for x, val in enumerate(TGA_T)
-                                  if val >= 550 )
-    M550[x] = TGA_M[inx550]
-    M1000[x] = TGA_M[-1] 
+for y in TRange:
+# find index of first time T (y) reaches T-0.5
+    inx1 = next(n for n, val in enumerate(TGA_T)if val > IntigerT[y]-0.5 )
+    inx2 = next(n for n, val in enumerate(TGA_T)if val > IntigerT[y]+0.5 )-1
+    IntigerM[(y-Tmin)] = mean(TGA_M[inx1:inx2]) 
 
-# intMass = np.array(Meta_df.loc[:,'Initial_mass_TGA_mg'])
-Mass_df = pd.DataFrame({'Intial_mass_external': np.array(Meta_df.loc[:,'Intial_mass_external_mg']),
-                       'Initial_mass_TGA': np.array(Meta_df.loc[:,'Initial_mass_TGA_mg'])})
-Mass_df['Initial_mass_TGA'] = Mass_df['Initial_mass_TGA'].astype(float, errors = 'raise')
-Mass_df['30C'] = M30
-Mass_df['40C'] = M40
-Mass_df['105C'] = M105
-Mass_df['180C'] = M180
-Mass_df['550C'] = M550
-Mass_df['1,000C'] =M1000
+# # intMass = np.array(Meta_df.loc[:,'Initial_mass_TGA_mg'])
+# Mass_df = pd.DataFrame({'Intial_mass_external': np.array(Meta_df.loc[:,'Intial_mass_external_mg']),
+#                        'Initial_mass_TGA': np.array(Meta_df.loc[:,'Initial_mass_TGA_mg'])})
+# Mass_df['Initial_mass_TGA'] = Mass_df['Initial_mass_TGA'].astype(float, errors = 'raise')
+# Mass_df['30C'] = M30
+# Mass_df['40C'] = M40
+# Mass_df['105C'] = M105
+# Mass_df['180C'] = M180
+# Mass_df['550C'] = M550
+# Mass_df['1,000C'] =M1000
 #%% Export data frame
 #Mass_df has the mass at select T for all of the "good" data that was
 #imported in the TGA_Mass_loss_data_import
