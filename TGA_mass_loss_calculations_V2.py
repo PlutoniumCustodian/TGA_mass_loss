@@ -22,13 +22,14 @@ if len(lst_TGA_data) != len(Meta_df):
     print('Error meta and expermental data do not match')
 #%% Find values for the weight at T of interest
 
-Num_of_records = len(lst_TGA_data)
+Num_of_records = len(1000-30)
 M30 = [0]*Num_of_records #make list of "0"s with same length as data
 M40 = [0]*Num_of_records
 M105 = [0]*Num_of_records
 M180 = [0]*Num_of_records
 M550 = [0]*Num_of_records
 M1000 = [0]*Num_of_records
+M30_1000 = [0]*Num_of_records
 
 #Get TGA data out of the list containing dataframes
 for x in range(Num_of_records):
@@ -39,12 +40,10 @@ for x in range(Num_of_records):
     # find index of first time T reaches 30C
     inx30 = next(x for x, val in enumerate(TGA_T)
                                   if val >= 30 )
-    M30[x] = TGA_M[inx30]
-    
+    M40[x] = TGA_M[inx30]
     inx40 = next(x for x, val in enumerate(TGA_T)
                                   if val >= 40 )
-    M40[x] = TGA_M[inx40]
-    
+    M30[x] = TGA_M[inx30]
     # find index of first time T reaches 105C
     inx105 = next(x for x, val in enumerate(TGA_T)
                                   if val >= 105 )
