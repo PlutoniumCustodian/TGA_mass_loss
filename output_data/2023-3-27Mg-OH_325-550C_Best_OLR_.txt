@@ -1,0 +1,42 @@
+ OLS Regression Results                                
+=======================================================================================
+Dep. Variable:                  Mg-OH   R-squared (uncentered):                   0.942
+Model:                            OLS   Adj. R-squared (uncentered):              0.940
+Method:                 Least Squares   F-statistic:                              423.6
+Date:                Mon, 27 Mar 2023   Prob (F-statistic):                    1.29e-17
+Time:                        17:05:43   Log-Likelihood:                         -44.717
+No. Observations:                  27   AIC:                                      91.43
+Df Residuals:                      26   BIC:                                      92.73
+Df Model:                           1                                                  
+Covariance Type:            nonrobust                                                  
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+MgO           26.4262      1.284     20.582      0.000      23.787      29.065
+==============================================================================
+Omnibus:                        2.876   Durbin-Watson:                   0.949
+Prob(Omnibus):                  0.237   Jarque-Bera (JB):                1.831
+Skew:                           0.632   Prob(JB):                        0.400
+Kurtosis:                       3.177   Cond. No.                         1.00
+==============================================================================
+
+Notes:
+[1] R² is computed without centering (uncentered) since the model does not contain a constant.
+[2] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+                              Mg-OH       R-squared (uncentered):         0.942
+Dep. Variable:                                                                 
+Model:                          OLS  Adj. R-squared (uncentered):  9.400000e-01
+Method:               Least Squares                  F-statistic:  4.236000e+02
+Date:              Mon, 27 Mar 2023           Prob (F-statistic):  1.290000e-17
+Time:                      17:05:43               Log-Likelihood: -4.471700e+01
+No. Observations:                27                          AIC:  9.143000e+01
+Df Residuals:                    26                          BIC:  9.273000e+01
+Df Model:                         1                           NaN           NaN
+Covariance Type:          nonrobust                           NaN           NaN
+        coef  std err       t  P>|t|  [0.025  0.975]
+MgO  26.4262    1.284  20.582    0.0  23.787  29.065
+                2.876     Durbin-Watson:  0.949
+Omnibus:                                       
+Prob(Omnibus):  0.237  Jarque-Bera (JB):  1.831
+Skew:           0.632          Prob(JB):  0.400
+Kurtosis:       3.177          Cond. No.  1.000

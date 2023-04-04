@@ -31,9 +31,10 @@ Tmax =1000
 TRange = range(Tmin, Tmax+1) #make a list with one interger for 30-1000C
 IntigerT = list(TRange)
 IntigerM = [0]*len(IntigerT)
+df_int_mass = pd.DataFrame({'Temperature':IntigerT})
 #Get TGA data out of the list containing dataframes
-# for x in range(Num_of_records):
-x=0   
+for x in range(Num_of_records):
+
 df = lst_TGA_data[x] #gets one TGA rocord
 TGA_T = np.array(df.loc[:,'Temperature'])
 TGA_M = np.array(df.iloc[:, 2]) # call by index because the are 2 "weight" column
@@ -42,7 +43,9 @@ for y in TRange:
 # find index of first time T (y) reaches T-0.5
     inx1 = next(n for n, val in enumerate(TGA_T)if val > IntigerT[y]-0.5 )
     inx2 = next(n for n, val in enumerate(TGA_T)if val > IntigerT[y]+0.5 )-1
-    IntigerM[(y-Tmin)] = mean(TGA_M[inx1:inx2]) 
+    IntigerM[(y-Tmin)] = mean(TGA_M[inx1:inx2])
+df_int_mass.insert(x,'mass', IntigerM)
+
 
 # # intMass = np.array(Meta_df.loc[:,'Initial_mass_TGA_mg'])
 # Mass_df = pd.DataFrame({'Intial_mass_external': np.array(Meta_df.loc[:,'Intial_mass_external_mg']),

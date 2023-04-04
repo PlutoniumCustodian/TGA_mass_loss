@@ -1,0 +1,42 @@
+                                OLS Regression Results                                
+=======================================================================================
+Dep. Variable:                  Al-OH   R-squared (uncentered):                   0.946
+Model:                            OLS   Adj. R-squared (uncentered):              0.944
+Method:                 Least Squares   F-statistic:                              459.5
+Date:                Mon, 27 Mar 2023   Prob (F-statistic):                    4.74e-18
+Time:                        15:23:39   Log-Likelihood:                         -51.257
+No. Observations:                  27   AIC:                                      104.5
+Df Residuals:                      26   BIC:                                      105.8
+Df Model:                           1                                                  
+Covariance Type:            nonrobust                                                  
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Al2O3         28.6358      1.336     21.435      0.000      25.890      31.382
+==============================================================================
+Omnibus:                        9.250   Durbin-Watson:                   1.453
+Prob(Omnibus):                  0.010   Jarque-Bera (JB):                7.787
+Skew:                          -0.979   Prob(JB):                       0.0204
+Kurtosis:                       4.758   Cond. No.                         1.00
+==============================================================================
+
+Notes:
+[1] R² is computed without centering (uncentered) since the model does not contain a constant.
+[2] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+                              Al-OH       R-squared (uncentered):         0.946
+Dep. Variable:                                                                 
+Model:                          OLS  Adj. R-squared (uncentered):  9.440000e-01
+Method:               Least Squares                  F-statistic:  4.595000e+02
+Date:              Mon, 27 Mar 2023           Prob (F-statistic):  4.740000e-18
+Time:                      15:23:39               Log-Likelihood: -5.125700e+01
+No. Observations:                27                          AIC:  1.045000e+02
+Df Residuals:                    26                          BIC:  1.058000e+02
+Df Model:                         1                           NaN           NaN
+Covariance Type:          nonrobust                           NaN           NaN
+          coef  std err       t  P>|t|  [0.025  0.975]
+Al2O3  28.6358    1.336  21.435    0.0   25.89  31.382
+                9.250     Durbin-Watson:   1.453
+Omnibus:                                        
+Prob(Omnibus):  0.010  Jarque-Bera (JB):  7.7870
+Skew:          -0.979          Prob(JB):  0.0204
+Kurtosis:       4.758          Cond. No.  1.0000
